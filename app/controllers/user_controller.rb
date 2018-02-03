@@ -8,7 +8,6 @@ class UserController < AppController
   end
 
   post '/users/login' do
-    # binding.pry
     @user = User.find_by(username: params[:username])
 
     if @user && @user.authenticate(params[:password])
@@ -21,11 +20,11 @@ class UserController < AppController
   end
 
   post '/users/signup' do
-    binding.pry
+    redirect to '/users/show'
   end
 
   get '/users/show' do
-    #make current user method
+    #make current user and session methods
     erb :'/users/show'
   end
 end
