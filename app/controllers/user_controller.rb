@@ -1,16 +1,14 @@
 class UserController < AppController
+
   get '/users/login' do
+    binding.pry
     erb :'/users/login'
   end
 
-  get '/users/signup' do
-    erb :'/users/signup'
-  end
-
   post '/users/login' do
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(username: params[:user][:username])
 
-    if @user && @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect to '/users/show'
     else
@@ -19,12 +17,59 @@ class UserController < AppController
     end
   end
 
+  get '/users/signup' do
+    erb :'/users/signup'
+  end
+
   post '/users/signup' do
-    redirect to '/users/show'
+    if params[:user][:username].empty?#check if username is already taken
+      flash[:message] = "*Please enter a valid username"
+      redirect to '/signup'
+    elsif params[:user][:email].empty?#check if a valid email address
+      flash[:message] = "*Please enter a valid email"
+      redirect to '/signup'
+    elsif params[:user][:password].empty?#check that it is a strong enough password
+      flash[:message] = "*Please enter a valid password"
+      redirect to '/signup'
+    else
+      @user = User.create(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password])
+      session[:user_id] = @user.id
+      erb :'/users/show'
+    end
   end
 
   get '/users/show' do
-    #make current user and session methods
     erb :'/users/show'
   end
+
+  get '/books/new' do
+    erb :'books/new'
+  end
+
+  post '/books/new' do
+    if params[:book][:title].empty?
+      flash[:message] = "*Please enter a valid title"
+      redirect to '/books/new'
+    elsif params[:book][:author].empty?
+      flash[:message] = "*Please enter a valid author"
+      redirect to '/books/new'
+    else
+      book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre], guided_reading_level: params[:book][:guided_reading_level])
+      session[:book_id] = book.id
+      book.user = current_user
+      book.save
+      redirect to '/users/show'
+    end
+  end
+
+  helpers do
+		def logged_in?
+			!!session[:user_id]
+		end
+
+		def current_user
+			User.find(session[:user_id])
+		end
+	end
+
 end

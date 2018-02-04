@@ -1,3 +1,15 @@
-<h1>Welcome, User</h1>
+<h1>Welcome, <%= current_user.username %></h1>
+
+<a href="/books/new">Add a new book to your library</a>
 
 <h3>Here are all of the book in your library</h3>
+<ol>
+  <% current_user.books.each do |book| %>
+  <li><%= book.title %></li>
+  <ul>
+    <li>Author: <%= book.author %></li>
+    <li>Genre: <%= book.genre %></li>
+    <li>Level: <%= book.guided_reading_level %></li>
+  </ul>
+  <% end %>
+</ol>
