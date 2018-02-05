@@ -75,7 +75,7 @@ class UserController < AppController
     end
   end
 
-  helpers do
+  helpers do #how do I make this work in a seperate class
 		def logged_in?
 			!!session[:user_id]
 		end

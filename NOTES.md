@@ -1,7 +1,16 @@
-User has_many books
-:users have a username, password(password_digest), and email
+[X] User has_many books
+      :users have a username, password(password_digest), and email
 
-Book belongs to User
-:books have :title, :author, :guided_reading_level, and :genre
+[X] Book belongs to User
+      :books have :title, :author, :guided_reading_level, and :genre
 
-Sorting by level and genre and maybe author
+[X] Sorting by level and genre and maybe author
+
+[] Make edit capabilities
+[] Make delete capabilities
+[] Make logout feature
+[] Able to input more than one book at a time
+[] Style everything so it looks nice
+[] Deploy with Heroku
+[] Email to find password?
+[] Make sorting selectable (a dropdown menu)?
