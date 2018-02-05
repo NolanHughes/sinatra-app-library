@@ -1,7 +1,6 @@
 class UserController < AppController
 
   get '/users/login' do
-    binding.pry
     erb :'/users/login'
   end
 
@@ -60,6 +59,11 @@ class UserController < AppController
       book.save
       redirect to '/users/show'
     end
+  end
+
+  post '/users/books/sort' do
+    binding.pry
+    erb :'/books/sort'
   end
 
   helpers do
