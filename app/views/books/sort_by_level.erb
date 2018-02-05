@@ -9,12 +9,12 @@
   <ul>
     <li>Author: <%= book.author %></li>
     <li>Genre: <%= book.genre %></li>
-    <li>Level: <%= book.guided_reading_level %></li>
+    <li>Guided Reading Level: <%= book.guided_reading_level %></li>
   </ul>
   <% end %>
 </ol>
 
-<h3>Sort by a different Guided Reading Level</h3>
+<h3>Sort by a different Guided Reading Level or Genre</h3>
 
 <% if flash.has?(:message) %>
   <h3><%= flash[:message] %></h3>

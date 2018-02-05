@@ -79,6 +79,16 @@ class UserController < AppController
     erb :'books/error'
   end
 
+  get '/books/:id/edit' do #make this a slug later
+    @book = Book.find_by_id(params[:id])
+    erb :'books/edit'
+  end
+
+  patch '/books/:id' do
+    #binding.pry
+    book = Book.find_by
+  end
+
   helpers do #how do I make this work in a seperate class
 		def logged_in?
 			!!session[:user_id]
