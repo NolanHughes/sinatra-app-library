@@ -62,9 +62,13 @@ class UserController < AppController
   end
 
   post '/books/sort' do
-    @books = Book.find_by_level(params[:level])
-    binding.pry
-    erb :'/books/sort'
+    @books = current_user.books.find_by_level(params[:level])
+    if @books
+      erb :'/books/sort'
+    else
+      flash[:message] = "*You don't have any books in your library with that level"
+      redirect to '/users/show'
+    end
   end
 
   helpers do

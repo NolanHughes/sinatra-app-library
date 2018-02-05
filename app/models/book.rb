@@ -6,8 +6,9 @@ class Book < ActiveRecord::Base
       if book.guided_reading_level == level_input.upcase
         book
       end
+    end.compact
+    if !books.empty?
+      books
     end
-    
-    books.compact
   end
 end

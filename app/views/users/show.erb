@@ -15,6 +15,11 @@
 </ol>
 
 <h3>Sort by Guided Reading Level</h3>
+
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %></h3>
+<% end %>
+
 <form method="post" action="/books/sort">
   <label for="level">Level:</label>
   <input type="text" name="level" />
