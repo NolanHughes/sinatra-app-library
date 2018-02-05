@@ -2,9 +2,9 @@
 
 <a href="/books/new">Add a new book to your library</a>
 
-<h3>Here are the book in your library with a level of <%= @books.first.guided_reading_level %></h3>
+<h3>Here are the books in your library with a level of <%= @books_by_level.first.guided_reading_level %></h3>
 <ol>
-  <% @books.each do |book| %>
+  <% @books_by_level.each do |book| %>
   <li><%= book.title %></li>
   <ul>
     <li>Author: <%= book.author %></li>
@@ -15,9 +15,18 @@
 </ol>
 
 <h3>Sort by a different Guided Reading Level</h3>
+
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %></h3>
+<% end %>
+
 <form method="post" action="/books/sort">
   <label for="level">Level:</label>
   <input type="text" name="level" />
 
-  <button type="submit">Sort</button>
+  <form method="post" action="/books/sort">
+    <label for="genre">Genre:</label>
+    <input type="text" name="genre" />
+
+    <button type="submit">Sort</button>
 </form>

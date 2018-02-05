@@ -7,7 +7,19 @@ class Book < ActiveRecord::Base
         book
       end
     end.compact
-    
+
+    if !books.empty?
+      books
+    end
+  end
+
+  def self.find_by_genre(genre_input)
+    books = all.collect do |book|
+      if book.genre.downcase == genre_input.downcase
+        book
+      end
+    end.compact
+
     if !books.empty?
       books
     end

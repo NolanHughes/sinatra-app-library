@@ -62,11 +62,15 @@ class UserController < AppController
   end
 
   post '/books/sort' do
-    @books = current_user.books.find_by_level(params[:level])
-    if @books
-      erb :'/books/sort'
+    @books_by_level = current_user.books.find_by_level(params[:level])
+    @books_by_genre = current_user.books.find_by_genre(params[:genre])
+
+    if @books_by_level
+      erb :'/books/sort_by_level'
+    elsif @books_by_genre
+      erb :'/books/sort_by_genre'
     else
-      flash[:message] = "*You don't have any books in your library with that level"
+      flash[:message] = "*You don't have any books in your library with that level/genre"
       redirect to '/users/show'
     end
   end

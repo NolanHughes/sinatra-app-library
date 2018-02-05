@@ -2,9 +2,9 @@
 
 <a href="/books/new">Add a new book to your library</a>
 
-<h3>Here are all of the book in your library</h3>
+<h3>Here are the books in your library with a genre of <%= @books_by_genre.first.genre %></h3>
 <ol>
-  <% current_user.books.each do |book| %>
+  <% @books_by_genre.each do |book| %>
   <li><%= book.title %></li>
   <ul>
     <li>Author: <%= book.author %></li>
@@ -14,7 +14,7 @@
   <% end %>
 </ol>
 
-<h3>Sort by Guided Reading Level or Genre</h3>
+<h3>Sort by a different Guided Reading Level or Genre</h3>
 
 <% if flash.has?(:message) %>
   <h3><%= flash[:message] %></h3>
