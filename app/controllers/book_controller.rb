@@ -5,17 +5,20 @@ class BookController < AppController
     erb :'books/new'
   end
 
-  post '/books/new' do
+  post '/books/new' do #don't delete everything when reloading after an error
     if params[:book][:title].empty?
       flash[:message] = "*Please enter a valid title"
       redirect to '/books/new'
     elsif params[:book][:author].empty?
       flash[:message] = "*Please enter a valid author"
       redirect to '/books/new'
+    elsif params[:book][:guided_reading_level].size != 1 || !letters?(params[:book][:guided_reading_level])
+      flash[:message] = "*Please enter a valid Guided Reading Level. It is a single letter from A-Z"
+      redirect to '/books/new'
     else
       book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize)
       session[:book_id] = book.id
-      # binding.pry
+
       book.user = current_user
       book.save
       redirect to '/users/show'

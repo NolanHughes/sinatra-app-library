@@ -1,5 +1,9 @@
 <h1>Add a new book</h1>
 
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %></h3>
+<% end %>
+
 <form method="post" action="/books/new">
   <label for="title">Title:</label>
   <input style="display: block;" type="text" id="title" name="book[title]"/>

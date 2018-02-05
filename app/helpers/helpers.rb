@@ -6,4 +6,8 @@ module Helpers
   def current_user
     User.find(session[:user_id])
   end
+
+  def letters?(string)
+   string.chars.any? { |char| ('a'..'z').include? char.downcase }
+ end
 end
