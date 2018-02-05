@@ -61,7 +61,8 @@ class UserController < AppController
     end
   end
 
-  post '/users/books/sort' do
+  post '/books/sort' do
+    @books = Book.find_by_level(params[:level])
     binding.pry
     erb :'/books/sort'
   end

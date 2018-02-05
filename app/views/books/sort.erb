@@ -1,0 +1,23 @@
+<h1>Welcome, <%= current_user.username %></h1>
+
+<a href="/books/new">Add a new book to your library</a>
+
+<h3>Here are the book in your library with a level of <%= @books.first.guided_reading_level %></h3>
+<ol>
+  <% @books.each do |book| %>
+  <li><%= book.title %></li>
+  <ul>
+    <li>Author: <%= book.author %></li>
+    <li>Genre: <%= book.genre %></li>
+    <li>Level: <%= book.guided_reading_level %></li>
+  </ul>
+  <% end %>
+</ol>
+
+<h3>Sort by a different Guided Reading Level</h3>
+<form method="post" action="/books/sort">
+  <label for="level">Level:</label>
+  <input type="text" name="level" />
+
+  <button type="submit">Sort</button>
+</form>
