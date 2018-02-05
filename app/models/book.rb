@@ -7,6 +7,7 @@ class Book < ActiveRecord::Base
         book
       end
     end.compact
+    
     if !books.empty?
       books
     end
