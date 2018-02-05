@@ -53,8 +53,10 @@ class BookController < AppController
   end
 
   patch '/books/:id' do
+    binding.pry
     book = Book.find_by_id(params[:id])
-    book.update(params[:book])
+    book.title = params[:book][:title]
+    binding.pry
     redirect to '/books/show'
   end
 

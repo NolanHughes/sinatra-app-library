@@ -6,8 +6,8 @@
 
 [X] Sorting by level and genre and maybe author
 
-[] Make edit capabilities
-[] Make delete capabilities
+[] Make edit capabilities #Something weird is going on with assinging user_id when editing books.
+[] Make delete capabilities #MAKE THIS FIRST!!!!
 [] Make logout feature
 [] Get book by :id
 [] Able to input more than one book at a time
