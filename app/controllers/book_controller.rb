@@ -43,14 +43,19 @@ class BookController < AppController
     erb :'books/error'
   end
 
+  get '/books/show' do #doesn't update now?
+    erb :'books/show'
+  end
+
   get '/books/:id/edit' do #make this a slug later
     @book = Book.find_by_id(params[:id])
     erb :'books/edit'
   end
 
   patch '/books/:id' do
-    #binding.pry
-    book = Book.find_by
+    book = Book.find_by_id(params[:id])
+    book.update(params[:book])
+    redirect to '/books/show'
   end
 
 end
