@@ -1,4 +1,5 @@
 class BookController < AppController
+  include Helpers
 
   get '/books/new' do
     erb :'books/new'
@@ -14,6 +15,7 @@ class BookController < AppController
     else
       book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize)
       session[:book_id] = book.id
+      # binding.pry
       book.user = current_user
       book.save
       redirect to '/users/show'

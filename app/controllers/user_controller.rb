@@ -1,4 +1,5 @@
 class UserController < AppController
+include Helpers
 
   get '/users/login' do
     erb :'/users/login'
@@ -40,15 +41,5 @@ class UserController < AppController
   get '/users/show' do
     erb :'/users/show'
   end
-
-  helpers do #how do I make this work in a seperate class
-		def logged_in?
-			!!session[:user_id]
-		end
-
-		def current_user
-			User.find(session[:user_id])
-		end
-	end
 
 end
