@@ -9,7 +9,10 @@
 [] Make edit capabilities
 [] Make delete capabilities
 [] Make logout feature
+[] Get book by :id
 [] Able to input more than one book at a time
+[] Make homepage button
+[] Add html template(s) for duplicate html
 [] Style everything so it looks nice
 [] Deploy with Heroku
 [] Email to find password?

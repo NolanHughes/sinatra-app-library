@@ -53,7 +53,7 @@ class UserController < AppController
       flash[:message] = "*Please enter a valid author"
       redirect to '/books/new'
     else
-      book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre], guided_reading_level: params[:book][:guided_reading_level])
+      book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize)
       session[:book_id] = book.id
       book.user = current_user
       book.save
@@ -71,8 +71,12 @@ class UserController < AppController
       erb :'/books/sort_by_genre'
     else
       flash[:message] = "*You don't have any books in your library with that level/genre"
-      redirect to '/users/show'
+      redirect to '/books/error'
     end
+  end
+
+  get '/books/error' do
+    erb :'books/error'
   end
 
   helpers do #how do I make this work in a seperate class

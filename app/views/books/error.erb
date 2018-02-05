@@ -1,0 +1,20 @@
+<h1>Welcome, <%= current_user.username %></h1>
+
+<a href="/books/new">Add a new book to your library</a>
+
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %></h3>
+<% end %>
+
+<h3>Sort by Guided Reading Level or Genre</h3>
+
+<form method="post" action="/books/sort">
+  <label for="level">Level:</label>
+  <input type="text" name="level" />
+
+  <form method="post" action="/books/sort">
+    <label for="genre">Genre:</label>
+    <input type="text" name="genre" />
+
+    <button type="submit">Sort</button>
+</form>
