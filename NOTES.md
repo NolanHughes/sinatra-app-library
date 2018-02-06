@@ -6,7 +6,7 @@
 
 [X] Sorting by level and genre and maybe author
 
-[] Make edit capabilities #Something weird is going on with assigning user_id when editing books.
+[X] Make edit capabilities
 [X] Make delete capabilities
 [] Make logout feature
 [] Get book by :id

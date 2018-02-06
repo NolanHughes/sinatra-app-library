@@ -39,7 +39,6 @@ include Helpers
   end
 
   get '/users/show' do
-    binding.pry
     erb :'/users/show'
   end
 

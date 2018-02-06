@@ -48,18 +48,17 @@ class BookController < AppController
     erb :'books/show'
   end
 
-  # get '/books/:id/edit' do #make this a slug later
-  #   @book = Book.find_by_id(params[:id])
-  #   erb :'books/edit'
-  # end
-  #
-  # patch '/books/:id' do
-  #   binding.pry
-  #   book = Book.find_by_id(params[:id])
-  #   book.title = params[:book][:title]
-  #   binding.pry
-  #   redirect to '/books/show'
-  # end
+  get '/books/:id/edit' do #make this a slug later
+    @book = Book.find_by_id(params[:id])
+    erb :'books/edit'
+  end
+
+  patch '/books/:id' do
+    @book = Book.find_by_id(params[:id])
+    @book.title = params[:book][:title]
+    @book.save
+    erb :'/books/show'
+  end
 
   delete '/books/:id/delete' do
     book = Book.find_by_id(params[:id])
