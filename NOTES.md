@@ -9,12 +9,13 @@
 [X] Make edit capabilities
 [X] Make delete capabilities
 [X] Make logout feature
-[] Make sure people can't access shit they aren't supposed to (Can still edit and delete other people's books)
+[X] Make sure people can't access shit they aren't supposed to
 [X] Get book by :id
+[X] Make homepage button (Done on "/books/show") #Might just put home button on everything with layout
+#[] Use slugs for everything
 [] Able to input more than one book at a time
-[X] Make homepage button (Done on "/books/show")
-[] Add html template(s) for duplicate html - layout.erb
-[] Style everything so it looks nice
-[] Deploy with Heroku
+#[] Add html template(s) for duplicate html - layout.erb
+#[] Style everything so it looks nice
+#[] Deploy with Heroku
 [] Email to find password?
-[] Make sorting selectable (a dropdown menu)?
+[] Make sorting selectable (a dropdown menu?)
