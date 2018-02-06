@@ -47,18 +47,24 @@ include Helpers
   end
 
   get '/users/home' do
-    erb :'/users/home'
+    if logged_in?
+      erb :'/users/home'
+    else
+      erb :'/users/login'
+    end
+  end
+
+  get '/users/logout' do
+    if logged_in?
+      session.clear
+      flash[:message] = "You have been successfully logged out"
+    end
+    erb :"/users/login"
   end
 
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
     erb :"/users/public_library"
-  end
-
-  get '/users/logout' do
-    session.clear
-    flash[:message] = "You have been successfully logged out"
-    redirect to "/users/login"
   end
 
 end
