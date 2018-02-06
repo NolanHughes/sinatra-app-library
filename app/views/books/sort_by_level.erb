@@ -21,12 +21,15 @@
 <% end %>
 
 <form method="post" action="/books/sort">
-  <label for="level">Level:</label>
+  <label style="display: block;" for="level">Level:</label>
   <input type="text" name="level" />
 
-  <form method="post" action="/books/sort">
-    <label for="genre">Genre:</label>
-    <input type="text" name="genre" />
+  <button type="submit">Sort</button>
 
-    <button type="submit">Sort</button>
+  <label style="display: block;" for="genre">Genre:</label>
+  <input type="text" name="genre" />
+
+  <button type="submit">Sort</button>
 </form>
+
+<a href="/users/logout" style="display: block;">Log Out</a>
