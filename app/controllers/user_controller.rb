@@ -42,4 +42,10 @@ include Helpers
     erb :'/users/show'
   end
 
+  get '/users/logout' do
+    session.clear
+    flash[:message] = "You have been successfully logged out"
+    redirect to "/users/login"
+  end
+
 end

@@ -2,7 +2,12 @@ class BookController < AppController
   include Helpers
 
   get '/books/new' do
-    erb :'books/new'
+    if logged_in?
+      erb :'books/new'
+    else
+      flash[:message] = "*You must be logged in to do that!"
+      redirect to '/users/login'
+    end
   end
 
   post '/books/new' do #don't delete everything when reloading after an error
