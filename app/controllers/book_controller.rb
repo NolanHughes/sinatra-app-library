@@ -1,6 +1,6 @@
 class BookController < AppController
   include Helpers
-  
+
     get '/books/new' do
       if logged_in?
         erb :'books/new'
@@ -26,7 +26,7 @@ class BookController < AppController
 
         book.user = current_user
         book.save
-        redirect to '/users/show'
+        redirect to '/users/home'
       end
     end
 

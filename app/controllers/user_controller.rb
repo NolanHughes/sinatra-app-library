@@ -2,7 +2,11 @@ class UserController < AppController
 include Helpers
 
   get '/users/login' do
-    erb :'/users/login'
+    if session[:user_id]
+      redirect to '/users/home'
+    else
+      erb :'/users/login'
+    end
   end
 
   post '/users/login' do
@@ -10,7 +14,7 @@ include Helpers
 
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect to '/users/show'
+      redirect to '/users/home'
     else
       flash[:message] = "*Please enter a valid username and password"
       erb :'/users/login'
@@ -18,28 +22,37 @@ include Helpers
   end
 
   get '/users/signup' do
-    erb :'/users/signup'
+    if session[:user_id]
+      redirect to "/users/home"
+    else
+      erb :'/users/signup'
+    end
   end
 
   post '/users/signup' do
     if params[:user][:username].empty?#check if username is already taken
       flash[:message] = "*Please enter a valid username"
-      redirect to '/signup'
+      erb :'/users/signup'
     elsif params[:user][:email].empty?#check if a valid email address
       flash[:message] = "*Please enter a valid email"
-      redirect to '/signup'
+      erb :'/users/signup'
     elsif params[:user][:password].empty?#check that it is a strong enough password
       flash[:message] = "*Please enter a valid password"
-      redirect to '/signup'
+      erb :'/users/signup'
     else
-      @user = User.create(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password])
-      session[:user_id] = @user.id
-      erb :'/users/show'
+      user = User.create(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password])
+      session[:user_id] = user.id
+      redirect to '/users/home'
     end
   end
 
-  get '/users/show' do
-    erb :'/users/show'
+  get '/users/home' do
+    erb :'/users/home'
+  end
+
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :"/users/public_library"
   end
 
   get '/users/logout' do
