@@ -1,1 +1,8 @@
 <h1>This is the book show page</h1>
+
+<h3><%= @book.title %></h3>
+
+<form action="/books/<%= @book.id %>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <button type="submit">Delete Book</button>
+</form>
