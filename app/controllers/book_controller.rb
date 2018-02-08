@@ -24,19 +24,19 @@ class BookController < AppController
         book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize)
         book.user = current_user
         book.save
-        
+
         redirect to '/users/home'
       end
     end
 
-    post '/books/sort' do
+    post '/books/filter' do
       @books_by_level = current_user.books.find_by_level(params[:level])
       @books_by_genre = current_user.books.find_by_genre(params[:genre])
 
       if @books_by_level
-        erb :'/books/sort_by_level'
+        erb :'/books/filter_by_level'
       elsif @books_by_genre
-        erb :'/books/sort_by_genre'
+        erb :'/books/filter_by_genre'
       else
         flash[:message] = "*You don't have any books in your library with that level/genre"
         redirect to '/books/error'

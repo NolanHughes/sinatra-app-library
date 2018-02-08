@@ -4,7 +4,7 @@
 [X] Book belongs to User
       :books have :title, :author, :guided_reading_level, and :genre
 
-[X] Sorting by level and genre and maybe author
+[X] Filtering by level and genre and maybe author
 
 [X] Make edit capabilities
 [X] Make delete capabilities
@@ -22,4 +22,4 @@
 #[] Deploy with Heroku
 [] Able to input more than one book at a time
 [] Email to find password?
-[] Make sorting selectable (a dropdown menu?)
+[] Make filtering selectable (a dropdown menu?)

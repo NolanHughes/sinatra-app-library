@@ -18,22 +18,22 @@
   </ol>
 <% end %>
 
-<h3>Sort by Guided Reading Level or Genre</h3>
+<h3>Filter by Guided Reading Level or Genre</h3>
 
 <% if flash.has?(:message) %>
   <h3><%= flash[:message] %></h3>
 <% end %>
 
-<form method="post" action="/books/sort">
+<form method="post" action="/books/filter">
   <label style="display: block;" for="level">Level:</label>
   <input type="text" name="level" />
 
-  <button type="submit">Sort</button>
+  <button type="submit">Filter</button>
 
   <label style="display: block;" for="genre">Genre:</label>
   <input type="text" name="genre" />
 
-  <button type="submit">Sort</button>
+  <button type="submit">Filter</button>
 </form>
 
 <a href="/users/logout" style="display: block;">Log Out</a>
