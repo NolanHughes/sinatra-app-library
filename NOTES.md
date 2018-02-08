@@ -20,6 +20,7 @@
 #[] Check that it is a strong enough
 #[] Use slugs for everything
 #[] Deploy with Heroku
+#[] Sort by artist, genre, and level on home page. Make sorted by level default
 [] Able to input more than one book at a time
 [] Email to find password?
 [] Make filtering selectable (a dropdown menu?)

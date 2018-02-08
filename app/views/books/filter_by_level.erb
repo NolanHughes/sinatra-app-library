@@ -1,7 +1,5 @@
 <h1>Welcome, <%= current_user.username %></h1>
 
-<a href="/books/new">Add a new book to your library</a>
-
 <h3>Here are the books in your library with a level of <%= @books_by_level.first.guided_reading_level %></h3>
 <ol>
   <% @books_by_level.each do |book| %>

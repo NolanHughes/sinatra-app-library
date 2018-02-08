@@ -1,14 +1,20 @@
 <h1>This is the book show page</h1>
 
-<h2><a href="/users/home">Home</a></h2>
 
-<h3><%= @book.title %></h3>
+<ul>
+  <li><%= @book.title %></a></li>
+  <ul>
+    <li>Author: <%= @book.author %></li>
+    <li>Genre: <%= @book.genre %></li>
+    <li>Guided Reading Level: <%= @book.guided_reading_level %></li>
+  </ul>
+</ul>
 
-<form action="/books/<%= @book.id %>/edit" method="get">
+<form class="edit-delete-buttons" action="/books/<%= @book.id %>/edit" method="get">
   <button type="submit">Edit Book</button>
 </form>
 
-<form action="/books/<%= @book.id %>/delete" method="POST">
+<form class="edit-delete-buttons" action="/books/<%= @book.id %>/delete" method="POST">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <button type="submit">Delete Book</button>
 </form>
