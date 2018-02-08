@@ -30,21 +30,25 @@ class BookController < AppController
     end
 
     get '/books/filter_by_genre' do
-      "filter by genre"
+      erb :'books/filter_by_genre'
     end
 
     get '/books/filter_by_level' do
-      "filter by level"
+      erb :'books/filter_by_level'
     end
 
-    post '/books/filter' do
-      @books_by_level = current_user.books.find_by_level(params[:level])
-      @books_by_genre = current_user.books.find_by_genre(params[:genre])
+    post '/books/filter/genre' do
+      if @books_by_genre = current_user.books.find_by_genre(params[:genre])
+        erb :'/books/show_by_genre'
+      else
+        flash[:message] = "*You don't have any books in your library with that level/genre"
+        redirect to '/books/error'
+      end
+    end
 
-      if @books_by_level
-        erb :'/books/filter_by_level'
-      elsif @books_by_genre
-        erb :'/books/filter_by_genre'
+    post '/books/filter/level' do
+      if @books_by_level = current_user.books.find_by_level(params[:level])
+        erb :'/books/show_by_level'
       else
         flash[:message] = "*You don't have any books in your library with that level/genre"
         redirect to '/books/error'
