@@ -17,7 +17,7 @@
 [X] Check if username is already taken
 [X] Check if a valid email address
 [X] Check that password is a strong enough
-#[] Hide password on log in
+[X] Hide password on log in
 [] Delete user function
 #[] Able to sort by title, author, genre, and level on home page.
 #[] Put log out button in nav bar

@@ -55,6 +55,13 @@
 
     <%= yield %>
 
+    <footer>
+      <form action="/users/<%= current_user.slug %>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <button type="submit">Delete Your Profile</button>
+      </form>
+    </footer>
+
   </body>
 
 </html>

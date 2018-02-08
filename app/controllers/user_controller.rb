@@ -74,4 +74,8 @@ include Helpers
     erb :"/users/public_library"
   end
 
+  delete '/users/:slug/delete' do
+    binding.pry
+  end
+
 end
