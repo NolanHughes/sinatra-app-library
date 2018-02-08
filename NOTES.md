@@ -13,6 +13,10 @@
 [X] Get book by :id
 [X] Make homepage button (Done on "/books/show") #Might just put home button on everything with layout
 #[] Use slugs for everything
+#[] Don't delete everything when reloading after an error creating a new book
+#[] Check if username is already taken
+#[] Check if a valid email address
+#[] Check that it is a strong enough password
 [] Able to input more than one book at a time
 #[] Add html template(s) for duplicate html - layout.erb
 #[] Style everything so it looks nice

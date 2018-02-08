@@ -22,9 +22,9 @@ class BookController < AppController
         redirect to '/books/new'
       else
         book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize)
-        # session[:book_id] = book.id #Why is this here?!?!?
         book.user = current_user
         book.save
+        
         redirect to '/users/home'
       end
     end
