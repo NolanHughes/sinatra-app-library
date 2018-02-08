@@ -5,7 +5,7 @@ include Helpers
     if session[:user_id]
       redirect to '/users/home'
     else
-      erb :'/users/login'
+      erb :'/users/login', :layout => :home_layout
     end
   end
 
@@ -25,13 +25,17 @@ include Helpers
     if session[:user_id]
       redirect to "/users/home"
     else
-      erb :'/users/signup'
+      erb :'/users/signup', :layout => :home_layout
     end
   end
 
   post '/users/signup' do
+    binding.pry
     if params[:user][:username].empty?#check if username is already taken
-      flash[:message] = "*Please enter a valid username"
+      flash[:message] = "*Username cannot be blank"
+      erb :'/users/signup'
+    elsif User.all.find { |user| user.username == params[:user][:username] }
+      flash[:message] = "*Username is already taken"
       erb :'/users/signup'
     elsif params[:user][:email].empty?#check if a valid email address
       flash[:message] = "*Please enter a valid email"
@@ -51,7 +55,7 @@ include Helpers
       erb :'/users/home'
     else
       flash[:message] = "*You must be logged in to do that!"
-      erb :'/users/login'
+      redirect to "users/login"
     end
   end
 

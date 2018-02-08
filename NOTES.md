@@ -14,7 +14,7 @@
 [X] Make homepage button (Done on "/books/show") #Might just put home button on everything with layout
 [X] Add html template(s) for duplicate html - layout.erb
 [X] Don't delete everything when reloading after an error creating a new book
-#[] Check if username is already taken
+[X] Check if username is already taken
 #[] Check if a valid email address
 #[] Check that password is a strong enough
 #[] Hide password on log in
