@@ -15,15 +15,15 @@
 [X] Add html template(s) for duplicate html - layout.erb
 [X] Don't delete everything when reloading after an error creating a new book
 [X] Check if username is already taken
-#[] Check if a valid email address
-#[] Check that password is a strong enough
+[X] Check if a valid email address
+[X] Check that password is a strong enough
 #[] Hide password on log in
-#[] Sort by title, author, genre, and level on home page.
+[] Delete user function
+#[] Able to sort by title, author, genre, and level on home page.
 #[] Put log out button in nav bar
 #[] Style everything so it looks nice
+#[] If signup does not work, keep users data
 #[] Use slugs for everything
 #[] Deploy with Heroku
-[] Make sure log in and sign uyp
 [] Able to input more than one book at a time
 [] Email to find password?
-[] Make filtering selectable (a dropdown menu?)
