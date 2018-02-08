@@ -2,8 +2,9 @@
 
 <h3>Here are the books in your library with a genre of <%= @books_by_genre.first.genre %></h3>
 <ol>
-  <% @books_by_genre.each do |book| %>
-  <li><%= book.title %></li>
+  <% @sorted_books = @books_by_genre.sort_by { |book| book.title } %>
+  <% @sorted_books.each do |book| %>
+  <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
   <ul>
     <li>Author: <%= book.author %></li>
     <li>Genre: <%= book.genre %></li>

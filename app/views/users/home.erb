@@ -5,7 +5,8 @@
 <% else %>
   <h3>Here are all of the books in your library</h3>
   <ol>
-    <% current_user.books.each do |book| %>
+    <% @books = current_user.books.sort_by { |book| book.guided_reading_level } %>
+    <% @books.each do |book| %>
     <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
     <ul>
       <li>Author: <%= book.author %></li>
