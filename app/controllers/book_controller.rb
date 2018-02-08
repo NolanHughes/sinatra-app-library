@@ -10,7 +10,7 @@ class BookController < AppController
       end
     end
 
-    post '/books' do #don't delete everything when reloading after an error
+    post '/books' do
       @title = params[:book][:title]
       @author = params[:book][:author]
       @genre = params[:book][:genre]
