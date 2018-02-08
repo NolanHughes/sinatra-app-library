@@ -12,15 +12,16 @@
 [X] Make sure people can't access shit they aren't supposed to
 [X] Get book by :id
 [X] Make homepage button (Done on "/books/show") #Might just put home button on everything with layout
-#[] Add html template(s) for duplicate html - layout.erb
+[X] Add html template(s) for duplicate html - layout.erb
 #[] Style everything so it looks nice
 #[] Don't delete everything when reloading after an error creating a new book
 #[] Check if username is already taken
 #[] Check if a valid email address
-#[] Check that it is a strong enough
+#[] Check that password is a strong enough
 #[] Use slugs for everything
 #[] Deploy with Heroku
 #[] Sort by artist, genre, and level on home page. Make sorted by level default
+#[] Hide password on log in
 [] Able to input more than one book at a time
 [] Email to find password?
 [] Make filtering selectable (a dropdown menu?)

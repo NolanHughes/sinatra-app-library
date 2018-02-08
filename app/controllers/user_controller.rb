@@ -50,6 +50,7 @@ include Helpers
     if logged_in?
       erb :'/users/home'
     else
+      flash[:message] = "*You must be logged in to do that!"
       erb :'/users/login'
     end
   end

@@ -30,11 +30,21 @@ class BookController < AppController
     end
 
     get '/books/filter_by_genre' do
-      erb :'books/filter_by_genre'
+      if logged_in?
+        erb :'books/filter_by_genre'
+      else
+        flash[:message] = "*You must be logged in to do that!"
+        redirect to '/users/login'
+      end
     end
 
     get '/books/filter_by_level' do
-      erb :'books/filter_by_level'
+      if logged_in?
+        erb :'books/filter_by_level'
+      else
+        flash[:message] = "*You must be logged in to do that!"
+        redirect to '/users/login'
+      end
     end
 
     post '/books/filter/genre' do

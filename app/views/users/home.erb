@@ -3,7 +3,7 @@
 <% if current_user.books == [] %>
   <h3>You have no books in your library</h3>
 <% else %>
-  <h3>Here are all of the book in your library</h3>
+  <h3>Here are all of the books in your library</h3>
   <ol>
     <% current_user.books.each do |book| %>
     <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
