@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet"  type="text/css" href="/stylesheets/style.css"
+    <link rel="stylesheet"  type="text/css" href="/stylesheets/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Library</title>
@@ -22,9 +22,21 @@
         </div>
         <ul class="nav navbar-nav">
           <li ><a href="/users/home">Home</a></li>
-          <li><a href="#">Filter</a></li>
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Filter
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/books/filter_by_level" class="dropdown-item">Guided Reading Level</a></li>
+              <li><a href="/books/filter_by_genre" class="dropdown-item">Genre</a></li>
+            </ul>
+          </li>
+
           <li><a href="/books/new">Add Book</a></li>
-          <li><a href="#">Users</a></li>
+          <li><a href="#">Users</a></li
+            <ul class="nav navbar-nav">
         </ul>
       </div>
     </nav>

@@ -29,6 +29,14 @@ class BookController < AppController
       end
     end
 
+    get '/books/filter_by_genre' do
+      "filter by genre"
+    end
+
+    get '/books/filter_by_level' do
+      "filter by level"
+    end
+
     post '/books/filter' do
       @books_by_level = current_user.books.find_by_level(params[:level])
       @books_by_genre = current_user.books.find_by_genre(params[:genre])
