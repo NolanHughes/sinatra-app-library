@@ -11,15 +11,20 @@ class BookController < AppController
     end
 
     post '/books' do #don't delete everything when reloading after an error
+      @title = params[:book][:title]
+      @author = params[:book][:author]
+      @genre = params[:book][:genre]
+      @level = params[:book][:guided_reading_level]
+
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
-        redirect to '/books/new'
+        erb :'/books/new'
       elsif params[:book][:author].empty?
         flash[:message] = "*Please enter a valid author"
-        redirect to '/books/new'
+        erb :'/books/new'
       elsif params[:book][:guided_reading_level].size != 1 || !letters?(params[:book][:guided_reading_level])
         flash[:message] = "*Please enter a valid Guided Reading Level. It is a single letter from A-Z"
-        redirect to '/books/new'
+        erb :'/books/new'
       else
         book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize)
         book.user = current_user
@@ -85,6 +90,10 @@ class BookController < AppController
     get '/books/:id/edit' do #make this a slug later
       if logged_in?
         @book = Book.find_by_id(params[:id])
+        @title = @book.title
+        @author = @book.author
+        @genre = @book.genre
+        @level = @book.guided_reading_level
 
         if current_user.books.include?(@book)
           erb :'books/edit'
@@ -100,15 +109,20 @@ class BookController < AppController
 
     patch '/books/:id' do #slug it up!
       @book = Book.find_by_id(params[:id])
+      @title = params[:book][:title]
+      @author = params[:book][:author]
+      @genre = params[:book][:genre]
+      @level = params[:book][:guided_reading_level]
+
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
-        redirect to "/books/#{@book.id}/edit"
+        erb :"/books/edit"
       elsif params[:book][:author].empty?
         flash[:message] = "*Please enter a valid author"
-        redirect to "/books/#{@book.id}/edit"
+        erb :"/books/edit"
       elsif params[:book][:guided_reading_level].size != 1 || !letters?(params[:book][:guided_reading_level])
         flash[:message] = "*Please enter a valid Guided Reading Level. It is a single letter from A-Z"
-        redirect to "/books/#{@book.id}/edit"
+        erb :'/books/edit'
       else
         @book.title = params[:book][:title]
         @book.author = params[:book][:author]
@@ -121,11 +135,11 @@ class BookController < AppController
     end
 
     delete '/books/:id/delete' do
-      binding.pry
       book = Book.find_by_id(params[:id])
 
       if current_user.books.include?(book)
         book.delete
+        flash[:message] = "*Your book has been successfully deleted"
         redirect to '/users/home'
       else
         flash[:message] = "*You need to be logged into the proper account to delete this book"

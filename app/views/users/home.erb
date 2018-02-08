@@ -1,5 +1,9 @@
 <h1>Welcome, <%= current_user.username %></h1>
 
+<% if flash.has?(:message) %>
+  <h3><%= flash[:message] %></h3>
+<% end %>
+
 <% if current_user.books == [] %>
   <h3>You have no books in your library</h3>
 <% else %>
@@ -15,10 +19,6 @@
     </ul>
     <% end %>
   </ol>
-<% end %>
-
-<% if flash.has?(:message) %>
-  <h3><%= flash[:message] %></h3>
 <% end %>
 
 <a href="/users/logout" style="display: block;">Log Out</a>
