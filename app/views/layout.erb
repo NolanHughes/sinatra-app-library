@@ -35,6 +35,21 @@
           </li>
 
           <li><a href="/books/new">Add Book</a></li>
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Users
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <% @users = User.all.sort_by { |user| user.username } %>
+              <% @users.each do |user| %>
+                <li><a href="/users/<%= user.slug %>"><%= "#{user.username.capitalize}" %></a></li>
+              <% end %>
+            </ul>
+          </li>
+
+
           <li><a href="#">Users</a></li
             <ul class="nav navbar-nav">
         </ul>
