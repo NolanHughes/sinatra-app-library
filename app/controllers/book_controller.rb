@@ -48,6 +48,7 @@ class BookController < AppController
 
     get '/books/filter_by_level' do
       if logged_in?
+        flash[:message] = nil
         erb :'books/filter_by_level'
       else
         flash[:message] = "*You must be logged in to do that!"
@@ -116,14 +117,11 @@ class BookController < AppController
       @author = params[:book][:author]
       @genre = params[:book][:genre]
       @level = params[:book][:guided_reading_level]
-
+      # binding.pry
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
         erb :"/books/edit"
-      elsif @book.title == @title
-        flash[:message] = "*That is the current name of your book"
-        erb :'/books/edit'
-      elsif current_user.books.detect { |book| book.title.downcase == @title.downcase }
+      elsif current_user.books.detect { |book| book.title.downcase == @title.downcase && book.id != @book.id }
         flash[:message] = "*That title is already in your library"
         erb :'/books/edit'
       elsif params[:book][:author].empty?
