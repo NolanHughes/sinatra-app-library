@@ -1,15 +1,15 @@
 <h1>Welcome, <%= current_user.first_name %></h1>
 
-<% if flash.has?(:message) %>
-  <h3><%= flash[:message] %></h3>
-<% end %>
-
 <% if current_user.books == [] %>
   <h3 class="library-heading">You have no books in your library</h3>
 <% else %>
+  <% if flash.has?(:message) %>
   <h3 class="library-heading">Here are all of the books in your library</h3>
+  <h4>They are currently sorted by <%= flash[:message] %></h4>
+  <% end %>
+
   <div>
-    <form method="post" action="/users/home">
+    <form method="post" action="/users/home" id="sort-all-books-form">
       <label for="library-heading">Sort by:</label>
       <select id='library-heading' name='sort_name' type='text'>
         <% @names_to_sort_by.each() do |attribute| %>
@@ -17,7 +17,7 @@
         <% end %>
       </select>
 
-        <button type="submit" class="button">Sort</button>
+        <button type="submit" id="sort-all-button">Sort</button>
     </form>
   </div>
 
@@ -37,6 +37,6 @@
 
 
 
-<!-- <footer>
+<!-- <footer> -->
   <a href="/users/<%= current_user.slug %>/delete" class="button">Delete your profile</a>
-</footer> -->
+<!-- </footer> -->

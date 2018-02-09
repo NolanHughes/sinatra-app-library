@@ -62,11 +62,8 @@ include Helpers
       @names_to_sort_by = ["Author", "Title", "Genre", "Level"]
       @books = current_user.books
       @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
-      #
-      # @books_sorted_by_level = @books.order(guided_reading_level: :asc, title: :asc)
-      # @books_sorted_by_title = @books.order(title: :asc)
-      # @books_sorted_by_genre = @books.order(genre: :asc, title: :asc)
-      # @books_sorted_by_author = @books.order(author: :asc, title: :asc)
+
+      flash[:message] = "Guided Reading Level"
 
       erb :'/users/home'
     else
@@ -81,15 +78,19 @@ include Helpers
 
     if params[:sort_name] == "Title"
       @sorted_books = @books.order(title: :asc)
+      flash[:message] = "Title"
       erb :'/users/home'
     elsif params[:sort_name] == "Author"
       @sorted_books = @books.order(author: :asc, title: :asc)
+      flash[:message] = "Author"
       erb :'/users/home'
     elsif params[:sort_name] == "Genre"
       @sorted_books = @books.order(genre: :asc, title: :asc)
+      flash[:message] = "Genre"
       erb :'/users/home'
     else
       @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
+      flash[:message] = "Guided Reading Level"
       erb :'/users/home'
     end
   end
