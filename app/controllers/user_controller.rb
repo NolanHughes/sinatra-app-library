@@ -36,6 +36,9 @@ include Helpers
     elsif User.all.find { |user| user.username == params[:user][:username] }
       flash[:message] = "*Username is already taken"
       erb :'/users/signup'
+    elsif params[:user][:first_name].empty?
+      flash[:message] = "*First Name cannot be blank"
+      erb :'/users/signup'
     elsif !valid_email?(params[:user][:email])
       flash[:message] = "*Please enter a valid email"
       erb :'/users/signup'
@@ -43,7 +46,7 @@ include Helpers
       flash[:message] = "*Please enter a valid password"
       erb :'/users/signup'
     else
-      user = User.create(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password])
+      user = User.create(username: params[:user][:username], first_name: params[:user][:first_name].capitalize, email: params[:user][:email], password: params[:user][:password])
       session[:user_id] = user.id
       redirect to '/users/home'
     end
