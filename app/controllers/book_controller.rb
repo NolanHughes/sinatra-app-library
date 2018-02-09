@@ -117,7 +117,7 @@ class BookController < AppController
       @author = params[:book][:author]
       @genre = params[:book][:genre]
       @level = params[:book][:guided_reading_level]
-      # binding.pry
+
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
         erb :"/books/edit"

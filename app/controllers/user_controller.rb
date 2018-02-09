@@ -112,7 +112,13 @@ include Helpers
   end
 
   get '/users/:slug/delete' do
-    erb :'users/delete'
+    if logged_in?
+      flash[:message] = nil
+      erb :'users/delete'
+    else
+      flash[:message] = "*You must be logged in to delete your profile"
+      erb :"/users/login", :layout => :home_layout
+    end
   end
 
   delete '/users/:slug/delete' do
