@@ -74,8 +74,23 @@ include Helpers
     erb :"/users/public_library"
   end
 
+  get '/users/:slug/delete' do
+    erb :'users/delete'
+  end
+
   delete '/users/:slug/delete' do
-    binding.pry
+    @user = User.find_by_slug(params[:slug])
+
+    if @user && @user.authenticate(params[:user][:password])
+      session.clear
+      @user.delete
+
+      redirect to '/users/signup'
+    else
+      flash[:message] = "*The password you entered was not correct. Please re-enter it to delete your profile."
+      erb :'/users/delete'
+    end
+
   end
 
 end
