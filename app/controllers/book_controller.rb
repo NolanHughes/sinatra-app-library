@@ -88,6 +88,7 @@ class BookController < AppController
     end
 
     get '/books/:id/edit' do #make this a slug later
+      binding.pry
       if logged_in?
         @book = Book.find_by_id(params[:id])
         @title = @book.title
@@ -135,6 +136,7 @@ class BookController < AppController
     end
 
     delete '/books/:id/delete' do
+      binding.pry
       book = Book.find_by_id(params[:id])
 
       if current_user.books.include?(book)

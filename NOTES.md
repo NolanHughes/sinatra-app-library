@@ -20,8 +20,8 @@
 [X] Hide password on log in
 [X] Delete user function
 #[] Able to sort by title, author, genre, and level on home page.
-#[] Put log out button in nav bar
-#[] Style everything so it looks nice
+[X] Put log out button in nav bar
+[X] Style everything so it looks nice
 #[] If signup does not work, keep users data
 #[] Use slugs for everything
 #[] Deploy with Heroku

@@ -1,17 +1,20 @@
 <h1>Welcome, <%= current_user.username %></h1>
 
 <h3>Here are the books in your library with a genre of <%= @books_by_genre.first.genre %></h3>
-<ol>
-  <% @sorted_books = @books_by_genre.sort_by { |book| book.title } %>
-  <% @sorted_books.each do |book| %>
-  <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
-  <ul>
-    <li>Author: <%= book.author %></li>
-    <li>Genre: <%= book.genre %></li>
-    <li>Guided Reading Level: <%= book.guided_reading_level %></li>
-  </ul>
-  <% end %>
-</ol>
+
+<div class="all-book-list">
+  <ol>
+    <% @sorted_books = @books_by_genre.sort_by { |book| book.title } %>
+    <% @sorted_books.each do |book| %>
+    <li><a href="/books/<%= book.id %>" class="book-title"><%= book.title %></a></li>
+    <ul>
+      <li>Author: <%= book.author %></li>
+      <li>Genre: <%= book.genre %></li>
+      <li>Guided Reading Level: <%= book.guided_reading_level %></li>
+    </ul>
+    <% end %>
+  </ol>
+</div>
 
 <h3>Filter by a different Genre</h3>
 
@@ -23,7 +26,5 @@
   <label style="display: block;" for="genre">Genre:</label>
   <input type="text" name="genre" />
 
-  <button type="submit">Filter</button>
+  <button type="submit" class="button">Filter</button>
 </form>
-
-<a href="/users/logout" style="display: block;">Log Out</a>

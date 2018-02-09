@@ -1,17 +1,21 @@
 <h1><%= @user.username %>'s Public Profile</h1>
 
 <% if @user.books == [] %>
-  <h3>There are no books in their library</h3>
+  <h3 class="library-heading">There are no books in their library</h3>
 <% else %>
-  <h3>Here are all of the book in their library</h3>
-  <ol>
-    <% @user.books.each do |book| %>
-    <li><%= book.title %></li>
-    <ul>
-      <li>Author: <%= book.author %></li>
-      <li>Genre: <%= book.genre %></li>
-      <li>Guided Reading Level: <%= book.guided_reading_level %></li>
-    </ul>
-    <% end %>
-  </ol>
+  <h3 class="library-heading">Here are all of the books in their library</h3>
+  <div class="all-book-list">
+    <ol>
+
+      <% @books = @user.books.sort_by { |book| [book.guided_reading_level, book.title] } %>
+      <% @books.each do |book| %>
+      <li class="book-title"><%= book.title %></li>
+      <ul>
+        <li>Author: <%= book.author %></li>
+        <li>Genre: <%= book.genre %></li>
+        <li>Guided Reading Level: <%= book.guided_reading_level %></li>
+      </ul>
+      <% end %>
+    </ol>
+  </div>
 <% end %>

@@ -1,3 +1,103 @@
 .edit-delete-buttons {
   display: inline;
+  border: none;
+  padding: 20px 25px;
+}
+
+.edit-delete-buttons .button {
+  display: inline;
+}
+
+.logout {
+  float: right;
+}
+
+.nav li:hover {
+  box-shadow: 0 -2px black inset;
+}
+
+.navbar-header:hover {
+  box-shadow: 0 -2px black inset;
+}
+
+.button {
+    display: block;
+    width: 150px;
+    background: #d9d9d9;
+    color: #777;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+.button:hover {
+  color: #333;
+}
+
+h1, h3{
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.all-book-list {
+  width: 280px;
+  margin: 20px auto;
+  font-size: 1.25em;
+}
+
+.single-book {
+  width: 280px;
+  margin: 20px auto;
+  font-size: 1.25em;
+  text-decoration: none;
+}
+
+.single-book ul {
+  list-style-type: none;
+}
+
+.single-book-buttons {
+  margin: 0px auto;
+  display: block;
+  text-align: center;
+}
+
+.book-title {
+  font-size: 1.1em;
+  color: #333;
+  font-weight: bold;
+}
+
+.book-title:hover {
+  color: #1b4264;
+}
+
+.library-heading {
+  text-decoration: underline;
+}
+
+form {
+  width: 400px;
+  border: 3px solid #d9d9d9;
+  margin: auto;
+  padding: 20px 71px;
+}
+
+form input {
+  width: 100%;
+}
+
+h3 a {
+  color: #333;
+}
+
+h3 a:hover {
+  color: #1b4264;
+}
+
+p {
+  text-align: center;
+  font-size: 17.5px;
 }

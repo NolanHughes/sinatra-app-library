@@ -5,22 +5,25 @@
 <% end %>
 
 <% if current_user.books == [] %>
-  <h3>You have no books in your library</h3>
+  <h3 class="library-heading">You have no books in your library</h3>
 <% else %>
-  <h3>Here are all of the books in your library</h3>
-  <ol>
-    <% @books = current_user.books.sort_by { |book| [book.guided_reading_level, book.title] } %>
-    <% @books.each do |book| %>
-    <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
-    <ul>
-      <li>Author: <%= book.author %></li>
-      <li>Genre: <%= book.genre %></li>
-      <li>Guided Reading Level: <%= book.guided_reading_level %></li>
-    </ul>
-    <% end %>
-  </ol>
+  <h3 class="library-heading">Here are all of the books in your library</h3>
+  <div class="all-book-list">
+    <ol>
+      <% @books = current_user.books.sort_by { |book| [book.guided_reading_level, book.title] } %>
+      <% @books.each do |book| %>
+      <li><a href="/books/<%= book.id %>" class="book-title"><%= book.title %></a></li>
+      <ul>
+        <li>Author: <%= book.author %></li>
+        <li>Genre: <%= book.genre %></li>
+        <li>Guided Reading Level: <%= book.guided_reading_level %></li>
+      </ul>
+      <% end %>
+    </ol>
+  </div>
 <% end %>
 
-<a href="/users/logout" style="display: block;">Log Out</a>
 
-<a href="/users/<%= current_user.slug %>/delete">Delete your profile</a>
+
+
+<a href="/users/<%= current_user.slug %>/delete" class="button">Delete your profile</a>

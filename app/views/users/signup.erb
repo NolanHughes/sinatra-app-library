@@ -1,19 +1,19 @@
-<h1>Sign Up Page</h1>
+<h1>Sign Up</h1>
 
 <% if flash.has?(:message) %>
   <h3><%= flash[:message] %></h3>
 <% end %>
 
 <form method="post" action="/users/signup">
-  <label for="username">Username:</label>
-  <input style="display: block;" type="text" id="username" name="user[username]"/>
+  <label for="username">Username</label>
+  <input type="text" id="username" name="user[username]" placeholder="Enter Username" />
 
-  <label for="email">Email:</label>
-  <input style="display: block;" type="text" id="email" name="user[email]" />
+  <label for="email">Email</label>
+  <input type="text" id="email" name="user[email]" placeholder="Enter Email"/>
 
-  <label for="password">Password: (Must be at least 8 characters, have an upper and lower case letter, and a number)</label>
-  <input style="display: block;" type="text" id="password" name="user[password]" />
+  <label for="password">Password (Must be at least 8 characters, have an upper and lower case letter, and a number)</label>
+  <input type="text" id="password" name="user[password]" placeholder="Enter Password" />
 
-  <button style="display: block;" type="submit">Submit</button>
+  <button class="button" type="submit">Submit</button>
 
 </form>

@@ -1,10 +1,5 @@
-<h1>Welcome, <%= current_user.username %></h1>
-
 <% if flash.has?(:message) %>
   <h3><%= flash[:message] %></h3>
 <% end %>
 
-<h3>Click below to filter by Guided Reading Level or Genre</h3>
-
-<a href="/books/filter_by_level">Level</a>
-<a href="/books/filter_by_genre">Genre</a>
+<h3>Click in the navigation bar to filter by Guided Reading Level or Genre</h3>

@@ -21,7 +21,7 @@
           <a class="navbar-brand" href="/users/home">Classroom Library</a>
         </div>
         <ul class="nav navbar-nav">
-          <li ><a href="/users/home">Home</a></li>
+          <li><a href="/users/home">Home</a></li>
 
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -50,10 +50,16 @@
           </li>
         </ul>
 
+        <ul class="nav navbar-nav logout">
+          <li><a href="/users/logout">Log Out</a></li>
+        </ul>
+
       </div>
     </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-    <%= yield %>
 
   </body>
 
