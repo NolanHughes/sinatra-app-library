@@ -26,8 +26,8 @@ ex. Nolan (Nhughes987)
     Jessie (Jhughes91)
     Jessie (JessicaMarie)
 [X] If signup does not work, keep users data
+[X] Use slugs for everything
 #[] Able to sort by title, author, genre, and level on home page.
-#[] Use slugs for everything
 #[] Deploy with Heroku
 #[] Write in spec file
 [] Able to input more than one book at a time
