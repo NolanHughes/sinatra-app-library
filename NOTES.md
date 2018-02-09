@@ -25,8 +25,8 @@
 ex. Nolan (Nhughes987)
     Jessie (Jhughes91)
     Jessie (JessicaMarie)
+[X] If signup does not work, keep users data
 #[] Able to sort by title, author, genre, and level on home page.
-#[] If signup does not work, keep users data
 #[] Use slugs for everything
 #[] Deploy with Heroku
 #[] Write in spec file

@@ -29,7 +29,12 @@ include Helpers
     end
   end
 
-  post '/users/signup' do #maybe leave data that was filled out in this route too
+  post '/users/signup' do
+    @username =  params[:user][:username]
+    @first_name = params[:user][:first_name]
+    @email = params[:user][:email]
+    @password = params[:user][:password]
+
     if params[:user][:username].empty?
       flash[:message] = "*Username cannot be blank"
       erb :'/users/signup', :layout => :home_layout
