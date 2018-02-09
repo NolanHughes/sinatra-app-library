@@ -59,10 +59,38 @@ include Helpers
 
   get '/users/home' do
     if logged_in?
+      @names_to_sort_by = ["Author", "Title", "Genre", "Level"]
+      @books = current_user.books
+      @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
+      #
+      # @books_sorted_by_level = @books.order(guided_reading_level: :asc, title: :asc)
+      # @books_sorted_by_title = @books.order(title: :asc)
+      # @books_sorted_by_genre = @books.order(genre: :asc, title: :asc)
+      # @books_sorted_by_author = @books.order(author: :asc, title: :asc)
+
       erb :'/users/home'
     else
       flash[:message] = "*You must be logged in to do that!"
       redirect to "users/login"
+    end
+  end
+
+  post '/users/home' do
+    @names_to_sort_by = ["Author", "Title", "Genre", "Level"]
+    @books = current_user.books
+
+    if params[:sort_name] == "Title"
+      @sorted_books = @books.order(title: :asc)
+      erb :'/users/home'
+    elsif params[:sort_name] == "Author"
+      @sorted_books = @books.order(author: :asc, title: :asc)
+      erb :'/users/home'
+    elsif params[:sort_name] == "Genre"
+      @sorted_books = @books.order(genre: :asc, title: :asc)
+      erb :'/users/home'
+    else
+      @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
+      erb :'/users/home'
     end
   end
 

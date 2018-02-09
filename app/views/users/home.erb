@@ -8,10 +8,22 @@
   <h3 class="library-heading">You have no books in your library</h3>
 <% else %>
   <h3 class="library-heading">Here are all of the books in your library</h3>
+  <div>
+    <form method="post" action="/users/home">
+      <label for="library-heading">Sort by:</label>
+      <select id='library-heading' name='sort_name' type='text'>
+        <% @names_to_sort_by.each() do |attribute| %>
+          <option value="<%= attribute %>"> <%= attribute %> </option>
+        <% end %>
+      </select>
+
+        <button type="submit" class="button">Sort</button>
+    </form>
+  </div>
+
   <div class="all-book-list">
     <ol>
-      <% @books = current_user.books.sort_by { |book| [book.guided_reading_level, book.title] } %>
-      <% @books.each do |book| %>
+      <% @sorted_books.each do |book| %>
       <li><a href="/books/<%= book.slug %>" class="book-title"><%= book.title %></a></li>
       <ul>
         <li>Author: <%= book.author %></li>
@@ -25,6 +37,6 @@
 
 
 
-<footer>
+<!-- <footer>
   <a href="/users/<%= current_user.slug %>/delete" class="button">Delete your profile</a>
-</footer>
+</footer> -->

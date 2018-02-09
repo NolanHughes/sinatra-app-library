@@ -32,3 +32,16 @@ ex. Nolan (Nhughes987)
 #[] Write in spec file
 [] Able to input more than one book at a time
 [] Email to find password?
+
+Goes in all-book-list div tag in home.erb
+<ol>
+  <% @books = current_user.books.sort_by { |book| [book.guided_reading_level, book.title] } %>  
+  <% @books.each do |book| %>
+  <li><a href="/books/<%= book.slug %>" class="book-title"><%= book.title %></a></li>
+  <ul>
+    <li>Author: <%= book.author %></li>
+    <li>Genre: <%= book.genre %></li>
+    <li>Guided Reading Level: <%= book.guided_reading_level %></li>
+  </ul>
+  <% end %>
+</ol>
