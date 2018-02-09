@@ -29,6 +29,6 @@ ex. Nolan (Nhughes987)
 [X] Use slugs for everything
 [X] Able to sort by title, author, genre, and level on home page.
 #[] Deploy with Heroku
-#[] Write in spec file
+#[] Write in spec file (Still need to write readme and write desc about it in spec)
 [] Able to input more than one book at a time
 [] Email to find password?
