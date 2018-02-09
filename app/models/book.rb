@@ -26,13 +26,13 @@ class Book < ActiveRecord::Base
   end
 
   def slug
-    self.username.downcase.gsub(" ", "-")
+    self.title.downcase.gsub(" ", "-")
   end
 
   def self.find_by_slug(slug)
-    User.all.find do |user|
-      if user.slug.include?(slug)
-        User.find_by(username: user.username)
+    Book.all.find do |book|
+      if book.slug == slug
+        book
       end
     end
   end

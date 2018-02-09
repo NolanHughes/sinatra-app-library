@@ -12,7 +12,7 @@
     <ol>
       <% @books = current_user.books.sort_by { |book| [book.guided_reading_level, book.title] } %>
       <% @books.each do |book| %>
-      <li><a href="/books/<%= book.id %>" class="book-title"><%= book.title %></a></li>
+      <li><a href="/books/<%= book.slug %>" class="book-title"><%= book.title %></a></li>
       <ul>
         <li>Author: <%= book.author %></li>
         <li>Genre: <%= book.genre %></li>

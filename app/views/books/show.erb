@@ -9,11 +9,11 @@
 </div>
 
 <div class="single-book-buttons">
-  <form class="edit-delete-buttons" action="/books/<%= @book.id %>/edit" method="get">
+  <form class="edit-delete-buttons" action="/books/<%= @book.slug %>/edit" method="get">
     <button type="submit" class="button">Edit Book</button>
   </form>
 
-  <form class="edit-delete-buttons" action="/books/<%= @book.id %>/delete" method="POST">
+  <form class="edit-delete-buttons" action="/books/<%= @book.slug %>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <button type="submit" class="button">Delete Book</button>
   </form>

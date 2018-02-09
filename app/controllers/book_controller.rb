@@ -19,6 +19,9 @@ class BookController < AppController
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
         erb :'/books/new'
+      elsif current_user.books.detect { |book| book.title.downcase == @title.downcase }
+        flash[:message] = "*That title is already in your library"
+        erb :'/books/new'
       elsif params[:book][:author].empty?
         flash[:message] = "*Please enter a valid author"
         erb :'/books/new'
@@ -78,8 +81,8 @@ class BookController < AppController
       end
     end
 
-    get '/books/:id' do #slug it up!
-      if logged_in? && @book = current_user.books.find_by_id(params[:id])
+    get '/books/:slug' do
+      if logged_in? && @book = current_user.books.find_by_slug(params[:slug])
         erb :'books/show'
       else
         flash[:message] = "*That book does not appear to be in your library. You must be logged in as that user to view that book."
@@ -87,10 +90,9 @@ class BookController < AppController
       end
     end
 
-    get '/books/:id/edit' do #make this a slug later
-      binding.pry
+    get '/books/:slug/edit' do
       if logged_in?
-        @book = Book.find_by_id(params[:id])
+        @book = current_user.books.find_by_slug(params[:slug])
         @title = @book.title
         @author = @book.author
         @genre = @book.genre
@@ -108,7 +110,7 @@ class BookController < AppController
       end
     end
 
-    patch '/books/:id' do #slug it up!
+    patch '/books/:id' do
       @book = Book.find_by_id(params[:id])
       @title = params[:book][:title]
       @author = params[:book][:author]
@@ -118,6 +120,12 @@ class BookController < AppController
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
         erb :"/books/edit"
+      elsif @book.title == @title
+        flash[:message] = "*That is the current name of your book"
+        erb :'/books/edit'
+      elsif current_user.books.detect { |book| book.title.downcase == @title.downcase }
+        flash[:message] = "*That title is already in your library"
+        erb :'/books/edit'
       elsif params[:book][:author].empty?
         flash[:message] = "*Please enter a valid author"
         erb :"/books/edit"
@@ -135,9 +143,8 @@ class BookController < AppController
       end
     end
 
-    delete '/books/:id/delete' do
-      binding.pry
-      book = Book.find_by_id(params[:id])
+    delete '/books/:slug/delete' do
+      book = current_user.books.find_by_slug(params[:slug])
 
       if current_user.books.include?(book)
         book.delete
