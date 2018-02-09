@@ -19,11 +19,16 @@
 [X] Check that password is a strong enough
 [X] Hide password on log in
 [X] Delete user function
-#[] Able to sort by title, author, genre, and level on home page.
 [X] Put log out button in nav bar
 [X] Style everything so it looks nice
+#[] Able to sort by title, author, genre, and level on home page.
 #[] If signup does not work, keep users data
 #[] Use slugs for everything
+#[] Add first name to sign up page. Use this to greet on home page and public page. Use list of first name (username) in users list
+ex. Nolan (Nhughes987)
+    Jessie (Jhughes91)
+    Jessie (JessicaMarie)
 #[] Deploy with Heroku
+#[] Write in spec file
 [] Able to input more than one book at a time
 [] Email to find password?
