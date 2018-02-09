@@ -18,7 +18,7 @@
 [X] Check if a valid email address
 [X] Check that password is a strong enough
 [X] Hide password on log in
-[] Delete user function
+[X] Delete user function
 #[] Able to sort by title, author, genre, and level on home page.
 #[] Put log out button in nav bar
 #[] Style everything so it looks nice
