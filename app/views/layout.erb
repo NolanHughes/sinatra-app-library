@@ -42,9 +42,10 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <% @users = User.all.sort_by { |user| user.username } %>
+              <% @users = User.all.sort_by { |user| [user.first_name, user.username] } %>
               <% @users.each do |user| %>
-                <li><a href="/users/<%= user.slug %>"><%= "#{user.username.capitalize}" %></a></li>
+              <li><a href="/users/<%= user.slug %>"><%= "#{user.first_name.capitalize} (#{user.username})" %></a></li>
+
               <% end %>
             </ul>
           </li>

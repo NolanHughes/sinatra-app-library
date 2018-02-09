@@ -7,7 +7,7 @@
 
 <form action="/users/<%= current_user.slug %>/delete" method="POST">
   <label for="password">Password</label>
-  <input style="display: block;" type="text" id="password" name="user[password]" />
+  <input type="password" id="password" name="user[password]" />
 
   <input id="hidden" type="hidden" name="_method" value="delete">
   <button type="submit" class="button">Delete</button>

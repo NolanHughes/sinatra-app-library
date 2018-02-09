@@ -17,7 +17,7 @@ include Helpers
       redirect to '/users/home'
     else
       flash[:message] = "*Please enter a valid username and password"
-      erb :'/users/login'
+      erb :'/users/login', :layout => :home_layout
     end
   end
 
@@ -32,19 +32,19 @@ include Helpers
   post '/users/signup' do #maybe leave data that was filled out in this route too
     if params[:user][:username].empty?
       flash[:message] = "*Username cannot be blank"
-      erb :'/users/signup'
+      erb :'/users/signup', :layout => :home_layout
     elsif User.all.find { |user| user.username == params[:user][:username] }
       flash[:message] = "*Username is already taken"
-      erb :'/users/signup'
+      erb :'/users/signup', :layout => :home_layout
     elsif params[:user][:first_name].empty?
       flash[:message] = "*First Name cannot be blank"
-      erb :'/users/signup'
+      erb :'/users/signup', :layout => :home_layout
     elsif !valid_email?(params[:user][:email])
       flash[:message] = "*Please enter a valid email"
-      erb :'/users/signup'
+      erb :'/users/signup', :layout => :home_layout
     elsif !valid_password?(params[:user][:password])
       flash[:message] = "*Please enter a valid password"
-      erb :'/users/signup'
+      erb :'/users/signup', :layout => :home_layout
     else
       user = User.create(username: params[:user][:username], first_name: params[:user][:first_name].capitalize, email: params[:user][:email], password: params[:user][:password])
       session[:user_id] = user.id
@@ -67,7 +67,7 @@ include Helpers
       redirect to "/users/login"
     else
       flash[:message] = "*You must be logged in to log out"
-      erb :"/users/login"
+      erb :"/users/login", :layout => :home_layout
     end
 
   end
