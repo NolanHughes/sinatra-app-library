@@ -11,6 +11,10 @@ module Helpers
     string.chars.any? { |char| ('a'..'z').include? char.downcase }
   end
 
+  def numbers?(string)
+    string.scan(/\D/).empty?
+  end
+
   def valid_email?(email)
     email.match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/) ? true : false
   end

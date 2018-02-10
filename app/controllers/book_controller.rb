@@ -15,7 +15,7 @@ class BookController < AppController
       @author = params[:book][:author]
       @genre = params[:book][:genre]
       @level = params[:book][:guided_reading_level]
-      @quantity = params[:book][:quantity].to_i
+      @quantity = params[:book][:quantity]
 
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
@@ -29,11 +29,11 @@ class BookController < AppController
       elsif params[:book][:guided_reading_level].size != 1 || !letters?(params[:book][:guided_reading_level])
         flash[:message] = "*Please enter a valid Guided Reading Level. It is a single letter from A-Z"
         erb :'/books/new'
-      elsif !@quantity.is_a? Integer
-        flash[:message] = "*Please enter an integer"
+      elsif !numbers?(params[:book][:quantity])
+        flash[:message] = "*Please enter an integer for the quantity"
         erb :'/books/new'
       else
-        book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize, quantity: params[:book][:quantity])
+        book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize, quantity: params[:book][:quantity].to_i)
         book.user = current_user
         book.save
 
@@ -122,7 +122,7 @@ class BookController < AppController
       @author = params[:book][:author]
       @genre = params[:book][:genre]
       @level = params[:book][:guided_reading_level]
-      @quantity = @book.quantity
+      @quantity = params[:book][:quantity]
 
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
@@ -136,12 +136,15 @@ class BookController < AppController
       elsif params[:book][:guided_reading_level].size != 1 || !letters?(params[:book][:guided_reading_level])
         flash[:message] = "*Please enter a valid Guided Reading Level. It is a single letter from A-Z"
         erb :'/books/edit'
+      elsif !numbers?(params[:book][:quantity])
+        flash[:message] = "*Please enter an integer for the quantity"
+        erb :'/books/edit'
       else
         @book.title = params[:book][:title]
         @book.author = params[:book][:author]
         @book.genre = params[:book][:genre]
         @book.guided_reading_level = params[:book][:guided_reading_level]
-        @book.quantity = params[:book][:quantity]
+        @book.quantity = @quantity.to_i
         @book.save
 
         erb :'/books/show'
