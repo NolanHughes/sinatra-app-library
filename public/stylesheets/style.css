@@ -96,7 +96,7 @@ h1, h3{
   text-align: center;
   border-radius: 5px;
   font-weight: 400;
-  margin-left: 30px;
+  margin-left: 15px;
 }
 
 #sort-all-button:hover {
@@ -125,6 +125,11 @@ h3 a:hover {
 p {
   text-align: center;
   font-size: 17.5px;
+}
+
+#sort-title {
+  width: 110px;
+  margin-left: 15px;
 }
 
 footer {
