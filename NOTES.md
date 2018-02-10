@@ -31,6 +31,6 @@ ex. Nolan (Nhughes987)
 [X] Deploy with Heroku
 [X] Write in spec file (Still need to write readme and write desc about it in spec)
 [] User list is just searchable by username in a search bar in the navbar instead of dropdown
-[] books table has a quantity column
+[X] books table has a quantity column
 [] Able to input more than one book at a time
 [] Email to find password?

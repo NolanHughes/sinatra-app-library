@@ -8,16 +8,19 @@
   <input id="hidden" type="hidden" name="_method" value="patch">
 
   <label for="title">Title</label>
-  <input style="display: block;" type="text" id="title" name="book[title]" value="<%= @title %>"/>
+  <input type="text" id="title" name="book[title]" value="<%= @title %>"/>
 
   <label for="email">Author</label>
-  <input style="display: block;" type="text" id="email" name="book[author]" value="<%= @author %>" />
+  <input type="text" id="email" name="book[author]" value="<%= @author %>" />
 
   <label for="genre">Genre</label>
-  <input style="display: block;" type="text" id="genre" name="book[genre]" value="<%= @genre %>" />
+  <input type="text" id="genre" name="book[genre]" value="<%= @genre %>" />
 
   <label for="level">Guided Reading Level</label>
-  <input style="display: block;" type="text" id="level" name="book[guided_reading_level]" value="<%= @level %>" />
+  <input type="text" id="level" name="book[guided_reading_level]" value="<%= @level %>" />
+
+  <label for="quantity">Quantity</label>
+  <input type="text" id="quantity" name="book[quantity]" value="<%= @quantity %>" />
 
   <button class="button" type="submit">Submit</button>
 

@@ -15,6 +15,7 @@ class BookController < AppController
       @author = params[:book][:author]
       @genre = params[:book][:genre]
       @level = params[:book][:guided_reading_level]
+      @quantity = params[:book][:quantity].to_i
 
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
@@ -28,8 +29,11 @@ class BookController < AppController
       elsif params[:book][:guided_reading_level].size != 1 || !letters?(params[:book][:guided_reading_level])
         flash[:message] = "*Please enter a valid Guided Reading Level. It is a single letter from A-Z"
         erb :'/books/new'
+      elsif !@quantity.is_a? Integer
+        flash[:message] = "*Please enter an integer"
+        erb :'/books/new'
       else
-        book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize)
+        book = Book.create(title: params[:book][:title], author: params[:book][:author], genre: params[:book][:genre].capitalize, guided_reading_level: params[:book][:guided_reading_level].capitalize, quantity: params[:book][:quantity])
         book.user = current_user
         book.save
 
@@ -98,6 +102,7 @@ class BookController < AppController
         @author = @book.author
         @genre = @book.genre
         @level = @book.guided_reading_level
+        @quantity = @book.quantity
 
         if current_user.books.include?(@book)
           erb :'books/edit'
@@ -117,6 +122,7 @@ class BookController < AppController
       @author = params[:book][:author]
       @genre = params[:book][:genre]
       @level = params[:book][:guided_reading_level]
+      @quantity = @book.quantity
 
       if params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
@@ -135,6 +141,7 @@ class BookController < AppController
         @book.author = params[:book][:author]
         @book.genre = params[:book][:genre]
         @book.guided_reading_level = params[:book][:guided_reading_level]
+        @book.quantity = params[:book][:quantity]
         @book.save
 
         erb :'/books/show'

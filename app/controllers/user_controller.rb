@@ -59,7 +59,7 @@ include Helpers
 
   get '/users/home' do
     if logged_in?
-      @names_to_sort_by = ["Author", "Title", "Genre", "Level"]
+      @names_to_sort_by = ["Level", "Author", "Title", "Genre"]
       @books = current_user.books
       @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
 
