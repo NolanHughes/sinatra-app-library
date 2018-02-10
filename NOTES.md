@@ -28,7 +28,9 @@ ex. Nolan (Nhughes987)
 [X] If signup does not work, keep users data
 [X] Use slugs for everything
 [X] Able to sort by title, author, genre, and level on home page.
-#[] Deploy with Heroku
-#[] Write in spec file (Still need to write readme and write desc about it in spec)
+[X] Deploy with Heroku
+[X] Write in spec file (Still need to write readme and write desc about it in spec)
+[] User list is just searchable by username in a search bar in the navbar instead of dropdown
+[] books table has a quantity column
 [] Able to input more than one book at a time
 [] Email to find password?

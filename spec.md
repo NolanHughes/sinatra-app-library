@@ -10,7 +10,7 @@ Specs:
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying #Enabled routes that let me create a new book, look at and individual book's page, edit, and delete the book.
 - [x] Include user input validations #These are everywhere. From signing up and logging in to editing and creating a book to deleting a user profile.
 - [x] Display validation failures to user with error message (example form URL e.g. /posts/new) #Using tons of flash messages depending on the situation.
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code #My readme file has all of the requirements.
 
 Confirm
 - [x] You have a large number of small Git commits
