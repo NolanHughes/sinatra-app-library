@@ -73,7 +73,7 @@ include Helpers
   end
 
   post '/users/home' do
-    @names_to_sort_by = ["Author", "Title", "Genre", "Level"]
+    @names_to_sort_by = ["Level", "Author", "Title", "Genre"]
     @books = current_user.books
 
     if params[:sort_name] == "Title"
