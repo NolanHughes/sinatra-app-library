@@ -34,3 +34,5 @@ ex. Nolan (Nhughes987)
 [X] books table has a quantity column
 [] Able to input more than one book at a time
 [] Email to find password?
+[] Change flash messages to layout
+[] Put post /users/home in get users/home so page won't be reloaded. 

@@ -117,14 +117,17 @@ class BookController < AppController
     end
 
     patch '/books/:id' do
-      @book = Book.find_by_id(params[:id])
+      @book = current_user.books.find_by_id(params[:id])
       @title = params[:book][:title]
       @author = params[:book][:author]
       @genre = params[:book][:genre]
       @level = params[:book][:guided_reading_level]
       @quantity = params[:book][:quantity]
 
-      if params[:book][:title].empty?
+      if @book.nil?
+        flash[:message] = "*That is not your book. Please edit one of your books"
+        redirect to '/users/home'
+      elsif params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
         erb :"/books/edit"
       elsif current_user.books.detect { |book| book.title.downcase == @title.downcase && book.id != @book.id }
