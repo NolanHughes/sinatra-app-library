@@ -37,7 +37,7 @@ class BookController < AppController
         book.user = current_user
         book.save
 
-        redirect to '/users/home'
+        redirect to '/users/index'
       end
     end
 
@@ -91,7 +91,7 @@ class BookController < AppController
         erb :'books/show'
       else
         flash[:message] = "*That book does not appear to be in your library. You must be logged in as that user to view that book."
-        redirect to '/users/home'
+        redirect to '/users/index'
       end
     end
 
@@ -108,11 +108,11 @@ class BookController < AppController
           erb :'books/edit'
         else
           flash[:message] = "*You need to be logged into the proper account to edit this book"
-          redirect to "/users/home"
+          redirect to "/users/index"
         end
       else
         flash[:message] = "*You can't edit a book if you aren't logged in"
-        redirect to '/users/home'
+        redirect to '/users/index'
       end
     end
 
@@ -126,7 +126,7 @@ class BookController < AppController
 
       if @book.nil?
         flash[:message] = "*That is not your book. Please edit one of your books"
-        redirect to '/users/home'
+        redirect to '/users/index'
       elsif params[:book][:title].empty?
         flash[:message] = "*Please enter a valid title"
         erb :"/books/edit"
@@ -160,10 +160,10 @@ class BookController < AppController
       if current_user.books.include?(book)
         book.delete
         flash[:message] = "*Your book has been successfully deleted"
-        redirect to '/users/home'
+        redirect to '/users/index'
       else
         flash[:message] = "*You need to be logged into the proper account to delete this book"
-        redirect to "/users/home"
+        redirect to "/users/index"
       end
     end
 

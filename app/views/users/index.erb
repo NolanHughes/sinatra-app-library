@@ -9,7 +9,7 @@
   <% end %>
 
   <div>
-    <form method="post" action="/users/home" id="sort-all-books-form">
+    <form method="post" action="/users/index" id="sort-all-books-form">
       <label for="sort-title">Sort by:</label>
       <select id='sort-title' name='sort_name' type='text'>
         <% @names_to_sort_by.each() do |attribute| %>

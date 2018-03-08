@@ -3,7 +3,7 @@ include Helpers
 
   get '/users/login' do
     if session[:user_id]
-      redirect to '/users/home'
+      redirect to '/users/index'
     else
       erb :'/users/login', :layout => :home_layout
     end
@@ -14,7 +14,7 @@ include Helpers
 
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect to '/users/home'
+      redirect to '/users/index'
     else
       flash[:message] = "*Please enter a valid username and password"
       erb :'/users/login', :layout => :home_layout
@@ -23,7 +23,7 @@ include Helpers
 
   get '/users/signup' do
     if session[:user_id]
-      redirect to "/users/home"
+      redirect to "/users/index"
     else
       erb :'/users/signup', :layout => :home_layout
     end
@@ -53,11 +53,11 @@ include Helpers
     else
       user = User.create(username: params[:user][:username], first_name: params[:user][:first_name].capitalize, email: params[:user][:email], password: params[:user][:password])
       session[:user_id] = user.id
-      redirect to '/users/home'
+      redirect to '/users/index'
     end
   end
 
-  get '/users/home' do
+  get '/users/index' do
     if logged_in?
       @names_to_sort_by = ["Level", "Author", "Title", "Genre"]
       @books = current_user.books
@@ -65,33 +65,33 @@ include Helpers
 
       flash[:message] = "Guided Reading Level"
 
-      erb :'/users/home'
+      erb :'/users/index'
     else
       flash[:message] = "*You must be logged in to do that!"
       redirect to "users/login"
     end
   end
 
-  post '/users/home' do
+  post '/users/index' do
     @names_to_sort_by = ["Level", "Author", "Title", "Genre"]
     @books = current_user.books
 
     if params[:sort_name] == "Title"
       @sorted_books = @books.order(title: :asc)
       flash[:message] = "Title"
-      erb :'/users/home'
+      erb :'/users/index'
     elsif params[:sort_name] == "Author"
       @sorted_books = @books.order(author: :asc, title: :asc)
       flash[:message] = "Author"
-      erb :'/users/home'
+      erb :'/users/index'
     elsif params[:sort_name] == "Genre"
       @sorted_books = @books.order(genre: :asc, title: :asc)
       flash[:message] = "Genre"
-      erb :'/users/home'
+      erb :'/users/index'
     else
       @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
       flash[:message] = "Guided Reading Level"
-      erb :'/users/home'
+      erb :'/users/index'
     end
   end
 
