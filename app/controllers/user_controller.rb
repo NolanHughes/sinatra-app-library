@@ -61,38 +61,33 @@ include Helpers
     if logged_in?
       @names_to_sort_by = ["Level", "Author", "Title", "Genre"]
       @books = current_user.books
-      @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
 
-      flash[:message] = "Guided Reading Level"
+      if params.empty?
+        flash[:message] = "Guided Reading Level"
+        @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
+        erb :'/users/index'
+      elsif params[:sort_name] == "Title"
+        @sorted_books = @books.order(title: :asc)
+        flash[:message] = "Title"
+        erb :'/users/index'
+      elsif params[:sort_name] == "Author"
+        @sorted_books = @books.order(author: :asc, title: :asc)
+        flash[:message] = "Author"
+        erb :'/users/index'
+      elsif params[:sort_name] == "Genre"
+        @sorted_books = @books.order(genre: :asc, title: :asc)
+        flash[:message] = "Genre"
+        erb :'/users/index'
+      else
+        flash[:message] = "That is not a valid sort paramater"#Figure out how to make this the whole flash message instead of just tacked on the end.
+        erb :'/users/index'
+      end
 
-      erb :'/users/index'
     else
       flash[:message] = "*You must be logged in to do that!"
       redirect to "users/login"
     end
-  end
 
-  post '/users/index' do
-    @names_to_sort_by = ["Level", "Author", "Title", "Genre"]
-    @books = current_user.books
-
-    if params[:sort_name] == "Title"
-      @sorted_books = @books.order(title: :asc)
-      flash[:message] = "Title"
-      erb :'/users/index'
-    elsif params[:sort_name] == "Author"
-      @sorted_books = @books.order(author: :asc, title: :asc)
-      flash[:message] = "Author"
-      erb :'/users/index'
-    elsif params[:sort_name] == "Genre"
-      @sorted_books = @books.order(genre: :asc, title: :asc)
-      flash[:message] = "Genre"
-      erb :'/users/index'
-    else
-      @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
-      flash[:message] = "Guided Reading Level"
-      erb :'/users/index'
-    end
   end
 
   get '/users/logout' do

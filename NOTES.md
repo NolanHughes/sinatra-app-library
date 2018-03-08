@@ -34,5 +34,6 @@ ex. Nolan (Nhughes987)
 [X] books table has a quantity column
 [] Able to input more than one book at a time
 [] Email to find password?
-[] Change flash messages to layout
-[] Put post /users/home in get users/home so page won't be reloaded. 
+[] Change flash messages to layout (Doesn't work with how I want flash messages displayed.)
+[X] Put post /users/home in get users/home so page won't be reloaded.
+[] Sort function sorts by capital letters then puts lower case after. Thats pretty dumb. Also if user changes sort url to something other than specified strings in names_to_sort_by, error message isn't exactly what I want. (Note in user_controller)
