@@ -62,7 +62,7 @@ include Helpers
       @names_to_sort_by = ["Level", "Author", "Title", "Genre"]
       @books = current_user.books
 
-      if params.empty?
+      if params.empty? || params[:sort_name] == "Level"
         flash[:message] = "Guided Reading Level"
         @sorted_books = @books.order(guided_reading_level: :asc, title: :asc)
         erb :'/users/index'
